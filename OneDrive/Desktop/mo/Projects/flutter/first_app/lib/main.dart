@@ -10,10 +10,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+  return MaterialApp(
       title: 'First App',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+      primarySwatch: Colors.blue,
       ),
       home: const OrderSummaryPage(),
     );
@@ -28,11 +28,11 @@ class OrderSummaryPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cards 1'),
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () => Scaffold.of(context).openDrawer(),
+      title: const Text('Cards 1'),
+      leading: Builder(
+      builder: (context) => IconButton(
+      icon: const Icon(Icons.menu),
+      onPressed: () => Scaffold.of(context).openDrawer(),
           ),
         ),
       ),
@@ -40,18 +40,18 @@ class OrderSummaryPage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Card(
-              child: ListTile(
-                title: const Text('Total Orders'),
-                subtitle: const Text('as of July 18, 2025'),
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+        Card(
+        child: ListTile(
+        title: const Text('Total Orders'),
+          subtitle: const Text('as of July 18, 2025'),
                 trailing: const Text('862', style: TextStyle(fontSize: 32)),
               ),
             ),
             SizedBox(height: 16),
             Card(
-              child: ListTile(
+        child: ListTile(
                 title: const Text('Ordered Items This Week'),
                 subtitle: const Text('as of July 18, 2025'),
                 trailing: const Text('156', style: TextStyle(fontSize: 32)),
@@ -89,7 +89,7 @@ class AppDrawer extends StatelessWidget {
     return Stack(
       children: [
         // Overlay background
-        GestureDetector(
+      GestureDetector(
           onTap: () => Navigator.of(context).pop(),
           child: Container(
             color: Colors.black.withOpacity(0.4),
@@ -97,15 +97,15 @@ class AppDrawer extends StatelessWidget {
             height: MediaQuery.of(context).size.height,
           ),
         ),
-        Align(
+    Align(
           alignment: Alignment.centerLeft,
           child: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.75,
+          width: MediaQuery.of(context).size.width * 0.75,
             child: Drawer(
               backgroundColor: Colors.white,
               elevation: 16,
-              child: SafeArea(
-                child: Column(
+          child: SafeArea(
+          child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
@@ -123,13 +123,13 @@ class AppDrawer extends StatelessWidget {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                      child: Column(
+               child: Column(
                         children: [
                           Material(
                             color: selectedIndex == 0 ? Colors.grey[200] : Colors.white,
                             borderRadius: BorderRadius.circular(8),
                             elevation: selectedIndex == 0 ? 2 : 0,
-                            child: ListTile(
+               child: ListTile(
                               shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                               title: const Text('Cards 1'),
                               onTap: () {

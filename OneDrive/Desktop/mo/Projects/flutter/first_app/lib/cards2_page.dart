@@ -81,15 +81,15 @@ class _Cards2PageState extends State<Cards2Page> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Cards 2'),
-        leading: Builder(
-          builder: (context) => IconButton(
-            icon: const Icon(Icons.menu),
-            onPressed: () => Scaffold.of(context).openDrawer(),
-          ),
-        ),
+  appBar: AppBar(
+    title: const Text('Cards 2'),
+    leading: Builder(
+      builder: (context) => IconButton(
+        icon: const Icon(Icons.menu),
+        onPressed: () => Scaffold.of(context).openDrawer(),
       ),
+    ),
+  ),
       drawer: AppDrawer(selectedIndex: 2),
       body: FutureBuilder<List<Product>>(
         future: productsFuture,
@@ -108,108 +108,111 @@ class _Cards2PageState extends State<Cards2Page> {
             itemBuilder: (context, index) {
               final product = products[index];
               return Container(
-                margin: const EdgeInsets.only(bottom: 18),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(18),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.08),
-                      blurRadius: 12,
-                      offset: const Offset(0, 4),
+            margin: const EdgeInsets.only(bottom: 18),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(18),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.08),
+                  blurRadius: 12,
+                  offset: const Offset(0, 4),
                     ),
                   ],
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Stack(
-                      children: [
-                        ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(18),
-                            topRight: Radius.circular(18),
-                          ),
-                          child: Image.network(
-                            product.imageUrl,
-                            width: double.infinity,
-                            height: 160,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        Positioned(
-                          top: 12,
-                          right: 12,
-                          child: _buildBadge(product),
-                        ),
-                      ],
+            children: [
+              Stack(
+                children: [
+                  ClipRRect(
+              borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(18),
+                topRight: Radius.circular(18),
+              ),
+              child: Image.network(
+                product.imageUrl,
+                width: double.infinity,
+                height: 160,
+                      fit: BoxFit.cover,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(16, 14, 16, 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            product.name,
-                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
-                          ),
-                          const SizedBox(height: 6),
-                          Text(
-                            product.description,
-                            style: const TextStyle(fontSize: 13, color: Color(0xFF444444)),
-                            maxLines: 2,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          const SizedBox(height: 10),
-                          Row(
-                            children: [
-                              Icon(Icons.check_circle, size: 16, color: product.status == 'In Stock' ? Colors.green : (product.status == 'Low Stock' ? Colors.orange : Colors.red)),
-                              const SizedBox(width: 4),
-                              Text(
-                                product.status,
-                                style: TextStyle(
-                                  color: product.status == 'In Stock' ? Colors.green : (product.status == 'Low Stock' ? Colors.orange : Colors.red),
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 13,
-                                ),
-                              ),
-                              const SizedBox(width: 16),
-                              Icon(Icons.shopping_cart, size: 16, color: Colors.grey),
-                              const SizedBox(width: 4),
-                              Text(
-                                'Sold: ${product.unitsSold}',
-                                style: const TextStyle(fontSize: 13, color: Colors.grey),
-                              ),
-                            ],
-                          ),
-                          const SizedBox(height: 10),
-                          Text(
-                            '₹${product.price}',
-                            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                          ),
-                        ],
+                  ),
+                  Positioned(
+                    top: 12,
+                    right: 12,
+                    child: _buildBadge(product),
+                  ),
+                ],
+              ),
+            Padding(
+                padding: const EdgeInsets.fromLTRB(16, 14, 16, 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      product.name,
+                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+                    ),
+                    const SizedBox(height: 6),
+                    Text(
+                      product.description,
+                      style: const TextStyle(fontSize: 13, color: Color(0xFF444444)),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                  children: [
+                    Icon(Icons.check_circle, size: 16, color: product.status == 'In Stock' ? Colors.green : (product.status == 'Low Stock' ? Colors.orange : Colors.red)),
+                    const SizedBox(width: 4),
+                    Text(
+                      product.status,
+                      style: TextStyle(
+                        color: product.status == 'In Stock' ? Colors.green : (product.status == 'Low Stock' ? Colors.orange : Colors.red),
+                        fontWeight: FontWeight.w500,
+                        fontSize: 13,
                       ),
                     ),
-                  ],
-                ),
-              );
-            },
-          );
-        },
+                    const SizedBox(width: 16),
+                    Icon(Icons.shopping_cart, size: 16, color: Colors.grey),
+                    const SizedBox(width: 4),
+                                Text(
+                                  'Sold: ${product.unitsSold}',
+                                  style: const TextStyle(fontSize: 13, color: Colors.grey),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              '₹${product.price}',
+                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                        ],
       ),
-    );
+  ),
+    ],
+                ),
+     );
+     },
+  );
+        },
+   ),
+   );
   }
 
   Widget _buildBadge(Product product) {
     if (product.isNew) {
       return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-        decoration: BoxDecoration(
-          color: Colors.green,
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: const Text('New', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500)),
-      );
+    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+    decoration: BoxDecoration(
+      color: Colors.green,
+      borderRadius: BorderRadius.circular(8),
+    ),
+    child: const Text('New', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500)),
+  );
+
+
+
     } else if (product.status == 'Out of Stock') {
       return Container(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
